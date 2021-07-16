@@ -1,0 +1,15 @@
+{
+  "prometheus": {
+    "url": "http://localhost:9090"
+  },
+  "attributes": [
+    "executor_core_request",
+    "number_of_executors",
+    "driver_memory",
+    "executor_memory"
+  ],
+  "parameter": "pipeline_duration",
+  "dag_id": "ngs-pipeline",
+  "start_date": "2021-07-15",
+  "end_date": "2021-07-17"
+}
