@@ -29,15 +29,13 @@ class PipelineDuration:
         dag_duration_df = self.__read_prom_data('airflow_dag_run_duration', job_uuid_label, start_date, end_date)
         last_dag_status = self.__read_prom_data('airflow_dag_status', job_uuid_label, start_date, end_date)
 
-        # print(last_dag_status.head(1000).sort_values(['timestamp']).reset_index()['timestamp'])
-
         last_dag_status_max_timestamps = last_dag_status.sort_index(ascending=False).drop_duplicates(['job_uuid'])
 
         cluster_config_dag_dur = pd.merge(left=cluster_config_df, right=dag_duration_df, how='inner', on='job_uuid')
         attributes = self.config[0].attributes + ['value_y'] + ['job_uuid']
         subset_cluster_config_dag_dur = cluster_config_dag_dur[attributes].drop_duplicates()
         subset_cluster_config_dag_dur['value_y'] = pd.to_numeric(subset_cluster_config_dag_dur['value_y'])
-        grouped_config_dag_dur = cluster_config_dag_dur.groupby(['job_uuid']).max()
+        grouped_config_dag_dur = subset_cluster_config_dag_dur.groupby(['job_uuid']).max()
 
         config_dag_dur_status = pd.merge(left=grouped_config_dag_dur, right=last_dag_status_max_timestamps,
                                          how='inner', on='job_uuid')
