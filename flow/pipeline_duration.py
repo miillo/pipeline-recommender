@@ -10,11 +10,12 @@ class PipelineDuration:
 
     def flow(self):
         prom_data = self.__read_dag_durations()
+        machine_type = prom_data['machine_type'].iloc[0]
+        prom_data.to_csv(f'optimization/prom_data_{machine_type}.csv', index=False)
 
-    def __read_prom_data(self, metric, labels, start_date, end_date):  # todo delete labels parameter
+    def __read_prom_data(self, metric, start_date, end_date):
         cluster_config_data = self.prom_connect.get_metric_range_data(
             metric_name=metric,
-            # label_config=labels,
             start_time=start_date,
             end_time=end_date
         )
@@ -23,11 +24,10 @@ class PipelineDuration:
     def __read_dag_durations(self):
         start_date = parser.parse(self.config[0].start_date)
         end_date = parser.parse(self.config[0].end_date)
-        job_uuid_label = {'job_uuid': '4b537078-d8a0-44fe-b72d-ab972b662801'}  # todo delete
 
-        cluster_config_df = self.__read_prom_data('k8s_cluster_setup', job_uuid_label, start_date, end_date)
-        dag_duration_df = self.__read_prom_data('airflow_dag_run_duration', job_uuid_label, start_date, end_date)
-        last_dag_status = self.__read_prom_data('airflow_dag_status', job_uuid_label, start_date, end_date)
+        cluster_config_df = self.__read_prom_data('k8s_cluster_setup', start_date, end_date)
+        dag_duration_df = self.__read_prom_data('airflow_dag_run_duration', start_date, end_date)
+        last_dag_status = self.__read_prom_data('airflow_dag_status', start_date, end_date)
 
         last_dag_status_max_timestamps = last_dag_status.sort_index(ascending=False).drop_duplicates(['job_uuid'])
 
@@ -43,5 +43,5 @@ class PipelineDuration:
         config_dag_dur_status = config_dag_dur_status[attributes].drop_duplicates()
         config_dag_dur_status = config_dag_dur_status.rename({'value_y': 'dag_duration'}, axis=1)
 
-        print(config_dag_dur_status.head(10))
+        print(config_dag_dur_status.head(200))
         return config_dag_dur_status  # returns df

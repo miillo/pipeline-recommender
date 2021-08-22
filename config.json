@@ -4,10 +4,12 @@
   },
   "attributes": [
     "executor_instances",
-    "executor_memory"
+    "executor_memory",
+    "driver_memory",
+    "machine_type"
   ],
   "parameter": "pipeline_duration",
   "dag_id": "ngs-pipeline",
-  "start_date": "2021-07-30",
-  "end_date": "2021-08-02"
+  "start_date": "2021-08-21",
+  "end_date": "2021-08-25"
 }
