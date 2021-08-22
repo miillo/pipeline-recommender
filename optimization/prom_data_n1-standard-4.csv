@@ -2,7 +2,7 @@ executor_instances,executor_memory,driver_memory,machine_type,dag_duration,job_u
 4,512m,512m,n1-standard-4,539,06331652-d56d-4115-90f3-1f7f2b54bae8,failed
 4,512m,512m,n1-standard-4,467,1c96a4a4-c2e2-446f-a7c8-7322c9aa3eee,failed
 5,300m,2048m,n1-standard-4,387,1e32b200-d674-4f79-9378-9a9eebe64387,failed
-2,550m,600m,n1-standard-4,389,27785b7d-6c3d-49c1-886f-0e921b783798,running
+2,550m,600m,n1-standard-4,389,27785b7d-6c3d-49c1-886f-0e921b783798,failed
 2,600m,512m,n1-standard-4,421,2f70e378-173c-45cd-800d-273f405ab31b,success
 2,512m,1024m,n1-standard-4,428,35c3c7dd-7fe1-4667-8d4d-5be6af205d24,success
 6,600m,512m,n1-standard-4,432,35d0b826-ce6b-4ab7-917a-018b0429ae63,success
