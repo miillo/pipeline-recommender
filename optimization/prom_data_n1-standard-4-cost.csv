@@ -1,0 +1,10 @@
+executor_instances,executor_memory,driver_memory,machine_type,dag_duration,job_uuid,status,cost
+2,550,600,n1-standard-4,389,27785b7d-6c3d-49c1-886f-0e921b783798,niepowodzenie,0.07
+1,512,1024,n1-standard-4,432,aba82c40-521a-4938-bfaa-0890d969091c,sukces,0.07
+2,512,512,n1-standard-4,437,a7637f38-3f1d-4fb1-b928-7080a737e784,sukces,0.07
+2,512,512,n1-standard-4,451,802879c0-e06b-4b4a-9e62-cd8ffd7b392d,sukces,0.08
+2,600,512,n1-standard-4,421,2f70e378-173c-45cd-800d-273f405ab31b,sukces,0.08
+2,550,600,n1-standard-4,433,7cb2cb27-ae98-47ad-b21b-9dda1f2219f9,sukces,0.08
+2,550,600,n1-standard-4,463,9bc20da9-5ef9-4d70-8fbb-a5a13fe8a471,niepowodzenie,0.09
+2,500,1024,n1-standard-4,410,fb7d0ee7-f3c6-49cf-9d10-5a1641e1dc7d,sukces,0.09
+2,600,750,n1-standard-4,436,d5168832-bee5-4cb4-9f20-f6181c4eaee9,sukces,0.09
